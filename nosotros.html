@@ -1,4 +1,3 @@
-<!-- nosotros.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,19 +9,28 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <nav>
+    <header class="header-principal">
+        <nav class="nav-contenedor">
             <div class="logo">
-                <a href="index.html"><img src="img/descargaaaaa.png" alt="MISKI Logo"></a>
+                <a href="index.html">
+                    <img src="img/descargaaaaa.png" alt="MISKI Logo">
+                </a>
             </div>
-            <ul>
+            <ul class="nav-menu-lista">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="nosotros.html" class="active">Nosotros</a></li>
                 <li><a href="productos.html">Tienda</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
+                <li id="abrir-carrito" class="carrito-interactivo-btn">
+                    <div class="carrito-badge">
+                        <img src="img/carrito.png" alt="Carrito" class="carrito-icono-nav">
+                        <span id="contador-carrito">0</span>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
+
     <main>
         <section class="about-hero-full">
             <div class="hero-content">
@@ -63,8 +71,43 @@
             </div>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2026 MISKI - Caña de Azúcar y Derivados</p>
+
+    <div id="carrito-sidebar" class="carrito-sidebar">
+        <div class="carrito-sidebar-header">
+            <h2>Tu Carrito</h2>
+            <span id="cerrar-carrito" class="btn-cerrar-carrito">&times;</span>
+        </div>
+        <div id="carrito-items" class="carrito-sidebar-content">
+            <p id="carrito-vacio">El carrito está vacío.</p>
+        </div>
+        <div class="carrito-sidebar-footer">
+            <div class="total-estimado-box">
+                <span>Total Estimado:</span>
+                <span id="carrito-total-precio">S/ 0.00</span>
+            </div>
+            <button id="btn-finalizar-compra" class="btn-finalizar-compra">Proceder al Pago</button>
+        </div>
+    </div>
+
+    <footer class="footer-principal">
+        <div class="footer-social-row">
+            <a href="https://instagram.com" target="_blank" class="social-icon-circle instagram-active">
+                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384031.png" alt="Instagram">
+            </a>
+            <a href="https://tiktok.com" target="_blank" class="social-icon-circle tiktok-active">
+                <img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png" alt="TikTok">
+            </a>
+            <a href="https://facebook.com" target="_blank" class="social-icon-circle facebook-active">
+                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384005.png" alt="Facebook">
+            </a>
+        </div>
+        <p class="copyright-text">&copy; 2026 MISKI - Caña de Azúcar y Derivados</p>
     </footer>
+
+    <a href="https://wa.me/51918378549?text=Hola%20MISKI,%20deseo%20información%20sobre%20sus%20productos." target="_blank" id="btn-whatsapp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+
+    <script src="js/productos.js"></script>
 </body>
 </html>
