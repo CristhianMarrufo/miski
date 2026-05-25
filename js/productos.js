@@ -109,6 +109,7 @@ if (tarjetasProductos.length > 0) {
     }
 }
 
+//carrito
 function renderizarCarrito() {
     if (!carritoItemsContenedor) return;
     carritoItemsContenedor.innerHTML = '';
@@ -158,7 +159,7 @@ function renderizarCarrito() {
 
     asignarEventosControles();
 }
-
+//botones  de crud
 function asignarEventosControles() {
     const botonesCantidad = document.querySelectorAll('.btn-modificar-cantidad');
     botonesCantidad.forEach(boton => {
@@ -192,7 +193,7 @@ function sincronizarEstado() {
     localStorage.setItem('miski_carrito', JSON.stringify(BD_CARRITO));
     renderizarCarrito();
 }
-
+//boton de finalizasr compra
 if (btnFinalizarCompra) {
     btnFinalizarCompra.addEventListener('click', () => {
         if(BD_CARRITO.length === 0) {
@@ -200,8 +201,8 @@ if (btnFinalizarCompra) {
             return;
         }
 
-        const telefonoNegocio = "51918378549";     
-        let mensaje = `👋 ¡Hola MISKI! Me gustaría realizar el siguiente pedido:\n\n`;
+        const telefonoNegocio = "51918378549"; 
+        let mensaje = `¡Hola MISKI! Me gustaría realizar el siguiente pedido:\n\n`;
         let costoTotal = 0;
 
         BD_CARRITO.forEach(item => {
@@ -225,25 +226,72 @@ if (btnFinalizarCompra) {
     });
 }
 
-// Detectar la página actual y resaltar el menú automáticamente
+/*para el boton ver prod estrella*/
 document.addEventListener("DOMContentLoaded", () => {
-    const urlActual = window.location.pathname;
-    const enlacesMenu = document.querySelectorAll(".nav-menu-lista li a");
+    const parametrosURL = new URLSearchParams(window.location.search);
+    
+    if (parametrosURL.get('ver') === 'chancaca') {
+        const tarjetas = document.querySelectorAll('.product-card');
+        
+        tarjetas.forEach(tarjeta => {
+            const tituloProducto = tarjeta.querySelector('h3').textContent;
+            if (tituloProducto.includes('Chancaca')) {
+                tarjeta.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(() => {
+                    tarjeta.click();
+                }, 600);
+            }
+        });
+    }
+});
 
-    enlacesMenu.forEach(enlace => {
-        // Removemos cualquier clase active previa para evitar duplicados
-        enlace.classList.remove("active");
+//imagenes en nosotos
+document.addEventListener("DOMContentLoaded", () => {
+    // Seleccionamos las imágenes dentro de las tarjetas de la sección Nosotros
+    const fotosNosotros = document.querySelectorAll('.foto-item img');
 
-        // Obtenemos el nombre del archivo (ej: 'contacto.html')
-        const hrefAtributo = enlace.getAttribute("href");
+    fotosNosotros.forEach(imagen => {
+        imagen.addEventListener('mouseenter', function() {
+            // Aplicamos un escalado dinámico directo sobre el elemento
+            this.style.transform = 'scale(1.15)';
+            this.style.cursor = 'pointer';
+        });
+        imagen.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
+});
 
-        // Si la URL actual contiene el href del enlace, lo activa
-        if (urlActual.includes(hrefAtributo)) {
-            enlace.classList.add("active");
-        } 
-        // Caso especial para cuando estás en la raíz "/" (por defecto index.html)
-        else if ((urlActual === "/" || urlActual.endsWith("/")) && hrefAtributo === "index.html") {
-            enlace.classList.add("active");
-        }
+// logo miski
+
+document.addEventListener("DOMContentLoaded", () => {
+    const imagenLogo = document.querySelector('.logo img');
+
+    if (imagenLogo) {
+        imagenLogo.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+        });
+
+        imagenLogo.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    }
+});
+
+// por q elegir miski
+document.addEventListener("DOMContentLoaded", () => {
+    const tarjetasInfo = document.querySelectorAll('.info .card');
+
+    tarjetasInfo.forEach(tarjeta => {
+        tarjeta.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px)';
+            this.style.boxShadow = '0 12px 30px rgba(0, 0, 0, 0.12)';
+            this.style.cursor = 'pointer';
+        });
+
+        tarjeta.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.05)';
+        });
     });
 });
