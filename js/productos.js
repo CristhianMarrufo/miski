@@ -200,7 +200,7 @@ if (btnFinalizarCompra) {
             return;
         }
 
-        const telefonoNegocio = "51918378549"; 
+        const telefonoNegocio = "51918378549";     
         let mensaje = `👋 ¡Hola MISKI! Me gustaría realizar el siguiente pedido:\n\n`;
         let costoTotal = 0;
 
