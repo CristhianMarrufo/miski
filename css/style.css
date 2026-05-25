@@ -973,3 +973,12 @@ nav {
         right: -100%;
     }
 }
+.card {
+    background: white;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    flex: 1;
+    min-width: 250px;   
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
